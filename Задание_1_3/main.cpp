@@ -1,52 +1,24 @@
 #include <iostream>
-#include "main.h"
+#include "ClassA.h"
 using namespace std;
-
-
-void A::setY(int y)
-{
-    this->y = y;
-}
-int A::getY()
-{
-    return y;
-}
-void A::set_vars()
-{
-    if (x % 2 == 0)
-    {
-        x /= 2;
-    }
-    else
-    {
-        x *= 2;
-    }
-
-    if (y % 2 == 0)
-    {
-        y /= 2;
-    }
-    else
-    {
-        y *= 2;
-    }
-}
 
 
 int main()
 {
-    A a;
+    ClassA obj;
 
     int num1;
     int num2;
 
     cin >> num1 >> num2;
 
-    a.x = num1;
-    a.setY(num2);
+    obj.x = num1;
+    obj.setY(num2);
 
-    a.set_vars();
+    obj.set_vars();
 
-    printf("Open value: %d", a.x);
-    printf("\nHidden value: %d", a.getY());
+    printf("Open value: %d", obj.x);
+    printf("\nHidden value: %d", obj.getY());
+
+    return 0;
 }

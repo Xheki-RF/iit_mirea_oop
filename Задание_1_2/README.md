@@ -41,3 +41,15 @@ B parameter constructor
 B destructor
 B destructor
 ```
+
+**Компиляция и запуск**
+
+Чтобы скомпилировать, необходимо запустить консоль и написать:
+```powershell
+cd Задание_1_1
+g++ main.cpp ClassA.cpp ClassB.cpp -o main.exe
+```
+Чтобы запустить:
+```powershell
+.\main.exe
+```
