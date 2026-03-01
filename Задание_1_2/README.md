@@ -48,7 +48,7 @@ B destructor
 
 Чтобы скомпилировать, необходимо запустить консоль и написать:
 ```powershell
-cd Задание_1_1
+cd Задание_1_2
 g++ main.cpp ClassA.cpp ClassB.cpp -o main.exe
 ```
 Чтобы запустить:
