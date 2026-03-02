@@ -38,12 +38,13 @@
 ```powershell
 HealthPoint: "Одно целое число — итоговое значение здоровья персонажа".
 ```
+
 **Компиляция и запуск**
 
 Чтобы скомпилировать, необходимо запустить консоль и написать:
 ```powershell
 cd Задание_2_2
-g++ main.cpp Character.cpp main.cpp -o main.exe
+g++ main.cpp Character.cpp -o main.exe
 ```
 Чтобы запустить:
 ```powershell
