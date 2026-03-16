@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Character.h"
+#include "Healer.h"
 #include <string>
 
 int main()
