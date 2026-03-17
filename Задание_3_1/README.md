@@ -78,3 +78,15 @@ Broken item: Broken durability = 0
 ~Item (Dcnstr): Broken
 ~Item (Dcnstr): Sword
 ```
+
+**Компиляция и запуск**
+
+Чтобы скомпилировать, необходимо запустить консоль и написать:
+```powershell
+cd Задание_3_1
+g++ main.cpp Item.cpp -o main.exe
+```
+Чтобы запустить:
+```powershell
+.\main.exe
+```
