@@ -1,4 +1,4 @@
-**STATUS - ONGOING**
+**STATUS - PASSED✅**
 
 **Постановка задачи**
 
