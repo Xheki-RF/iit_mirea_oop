@@ -1,7 +1,7 @@
 #include "SmartSensor.h"
 #include <iostream>
 
-SmartSensor::SmartSensor(int x_base, int y_base, int x, int y) : Sensor(x_base, y_base)
+SmartSensor::SmartSensor(int x, int y) : Sensor(x, y)
 {
     this->x = x;
     this->y = y;

@@ -12,7 +12,7 @@ public:
     int y;
 
 public:
-    SmartSensor(int x_base, int y_base, int x, int y);
+    SmartSensor(int x, int y);
     void setXY(int x, int y);
     void getXY();
 };

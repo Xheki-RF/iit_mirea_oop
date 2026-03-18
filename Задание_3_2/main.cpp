@@ -8,7 +8,7 @@ int main()
 
     std::cin >> x >> y;
 
-    SmartSensor ss(x, y, x, y);
+    SmartSensor ss(x, y);
 
     ss.Sensor::getXY();
     ss.getXY();
