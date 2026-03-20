@@ -76,3 +76,15 @@ Sensor: 9 5
 SmartSensor: 3 4
 Sensor: 3 2
 ```
+
+**Компиляция и запуск**
+
+Чтобы скомпилировать, необходимо запустить консоль и написать:
+```powershell
+cd Задание_3_2
+g++ main.cpp Sensor.cpp SmartSensor.cpp -o main.exe
+```
+Чтобы запустить:
+```powershell
+.\main.exe
+```
