@@ -38,8 +38,8 @@ int main()
     {
         ss.Sensor::setXY(a + 1, b + 1);
         ss.setXY(a - 1, b - 1);
-        ss.getXY();
         ss.Sensor::getXY();
+        ss.getXY();
     }
 
     return (0);
