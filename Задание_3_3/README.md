@@ -76,6 +76,7 @@ NAS3 150 750
 ```
 **Выходные данные**
 ```powershell
+3
 Initial state
 NAS1 100 500
 NAS2 40 1000

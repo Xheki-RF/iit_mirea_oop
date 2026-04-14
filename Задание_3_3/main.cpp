@@ -3,30 +3,12 @@
 #include <vector>
 
 
-void printInfo(std::vector<NetworkStorage*> obj_list)
-{
-    for (int i; i < obj_list.size(); i++)
-    {
-        if (obj_list[i] == nullptr)
-        {
-            std::cout << "Empty pointer\n";
-        }
-        else
-        {
-            obj_list[i]->getInfo();
-        }
-    }
-}
-
-
 int main()
 {
     int amnt_device, v, size, min_v;
     std::string name;
 
     std::cin >> amnt_device;
-
-
 
     std::vector<NetworkStorage*> device_container;
 
@@ -41,7 +23,7 @@ int main()
 
     std::cout << "Initial state\n";
 
-    printInfo(device_container);
+    NetworkStorage::printInfo(device_container);
 
     std::cin >> min_v;
 
@@ -60,5 +42,5 @@ int main()
 
     std::cout << "Modified state\n";
 
-    printInfo(device_container);
+    NetworkStorage::printInfo(device_container);
 }
