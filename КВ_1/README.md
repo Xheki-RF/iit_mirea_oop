@@ -128,7 +128,7 @@ Object_3  Object_15  Object_5
 
 ```powershell
 cd КВ_1
-g++ cl_1.cpp cl_2.cpp cl_application.cpp cl_base.cpp main.cpp -o main.exe
+g++ cl_1.cpp cl_application.cpp cl_base.cpp main.cpp -o main.exe
 ```
 
 Чтобы запустить:

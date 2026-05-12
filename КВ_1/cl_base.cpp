@@ -107,38 +107,6 @@ void cl_base::print_tree()
     }
 }
 
-cl_base* cl_base::find_object(std::string name)
-{
-    if (this->name == name) return this;
-    for (auto child : v_child_objects)
-    {
-        cl_base* found = child->find_object(name);
-        if (found) return found;
-    }
-    return nullptr;
-}
-
-bool cl_base::is_valid_parent()
-{
-    // Корневой объект всегда может быть родителем
-    if (p_head_object == nullptr)
-        return true;
-    
-    // Если у объекта уже есть подчинённые, он может быть родителем
-    if (!v_child_objects.empty())
-        return true;
-    
-    // Проверяем, является ли этот объект последним подчинённым своего родителя
-    if (p_head_object != nullptr)
-    {
-        int count = p_head_object->get_subordinate_count();
-        if (count > 0 && p_head_object->get_subordinate_by_index(count) == this)
-            return true;
-    }
-    
-    return false;
-}
-
 cl_base::~cl_base()
 {
     for (int i = 0; i < v_child_objects.size(); i++)
