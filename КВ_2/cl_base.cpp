@@ -98,21 +98,25 @@ cl_base* cl_base::find_object_by_name(std::string name)
     cl_base* result = nullptr;
     int count = 0;
 
-    std::function<void(cl_base*)> dfs = [&](cl_base* node)
+    std::queue<cl_base*> q;
+    q.push(this);
+
+    while (!q.empty())
     {
-        if (node->name == name)
+        cl_base* current = q.front();
+        q.pop();
+
+        if (current->name == name)
         {
-            result = node;
+            result = current;
             count++;
         }
 
-        for (auto child : node->v_child_objects)
+        for (auto child : current->v_child_objects)
         {
-            dfs(child);
+            q.push(child);
         }
-    };
-
-    dfs(this);
+    }
 
     if (count == 1)
         return result;
@@ -125,29 +129,37 @@ cl_base* cl_base::find_object(std::string name)
     cl_base* result = nullptr;
     int count = 0;
 
-    // поднимаемся к корню
+    // поднимаемся к корню дерева
     cl_base* root = this;
+
     while (root->p_head_object != nullptr)
     {
         root = root->p_head_object;
     }
 
-    std::function<void(cl_base*)> dfs = [&](cl_base* node)
+    // поиск по всему дереву
+    std::queue<cl_base*> q;
+    q.push(root);
+
+    while (!q.empty())
     {
-        if (node->name == name)
+        cl_base* current = q.front();
+        q.pop();
+
+        if (current->name == name)
         {
-            result = node;
+            result = current;
             count++;
         }
 
-        for (auto child : node->v_child_objects)
+        // добавляем детей в очередь
+        for (auto child : current->v_child_objects)
         {
-            dfs(child);
+            q.push(child);
         }
-    };
+    }
 
-    dfs(root);
-
+    // имя должно быть уникальным
     if (count == 1)
         return result;
 
@@ -184,11 +196,9 @@ void cl_base::print_tree_ready(int level)
 
     // состояние
     if (is_ready != 0)
-        std::cout << " is ready";
+        std::cout << " is ready" << std::endl;
     else
-        std::cout << " is not ready";
-
-    std::cout << std::endl;
+        std::cout << " is not ready" << std::endl;
 
     // рекурсия по детям
     // for (int i = 0; i < v_child_objects.size(); i++)

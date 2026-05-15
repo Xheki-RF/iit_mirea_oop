@@ -35,9 +35,9 @@ public:
     void set_ready(int is_ready);
 
     // метод вывода наименований объектов в дереве иерархии слева направо и сверху вниз
-    void print_tree(int level);
+    void print_tree(int level = 0);
 
-    void print_tree_ready(int level);
+    void print_tree_ready(int level = 0);
 
     // метод получения адреса непосредственно подчиненного объект по его индексу
     cl_base* get_subordinate_by_index(int index);

@@ -14,13 +14,12 @@ cl_application::cl_application(cl_base* p_head_object): cl_base(p_head_object)
 
 void cl_application::build_tree_objects()
 {
-    std::string root_name;
+    std::string root_name, parent_name, child_name;
     std::cin >> root_name;
     set_name(root_name);
 
     cl_base* current = this;
 
-    std::string parent_name, child_name;
     int class_affil;
 
     while (std::cin >> parent_name)
@@ -57,7 +56,7 @@ void cl_application::build_tree_objects()
 int cl_application::exec_app()
 {
     std::cout << "Object tree\n";
-    print_tree(0);
+    print_tree();
     std::cout << "The tree of objects and their readiness\n";
 
     std::string name;
@@ -73,7 +72,7 @@ int cl_application::exec_app()
         }
     }
 
-    print_tree_ready(0);
+    print_tree_ready();
 
     return 0;
 }
