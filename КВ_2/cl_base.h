@@ -17,7 +17,7 @@ protected:
 
 public:
     // параметризированный конструктор с параметрами
-    cl_base(cl_base* p_head_object, std::string name = "Base_object", int class_affil = 1, int is_ready = 0);
+    cl_base(cl_base* p_head_object, std::string name = "Base_object", int is_ready = 0);
 
     // метод редактирования имени объекта
     bool set_name(std::string new_name);

@@ -4,11 +4,10 @@
 #include <iostream>
 #include <functional>
 
-cl_base::cl_base(cl_base* p_head_object, std::string name, int class_affil, int is_ready)
+cl_base::cl_base(cl_base* p_head_object, std::string name, int is_ready)
 {
     this->p_head_object = p_head_object;
     this->name = name;
-    this->class_affil = class_affil;
     this->is_ready = is_ready;
 
     if (p_head_object != nullptr)

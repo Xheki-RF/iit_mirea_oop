@@ -41,15 +41,15 @@ void cl_application::build_tree_objects()
             continue;
 
         if (class_affil == 2)
-            current = new cl_2(parent, child_name, class_affil);
+            current = new cl_2(parent, child_name);
         else if (class_affil == 3)
-            current = new cl_3(parent, child_name, class_affil);
+            current = new cl_3(parent, child_name);
         else if (class_affil == 4)
-            current = new cl_4(parent, child_name, class_affil);
+            current = new cl_4(parent, child_name);
         else if (class_affil == 5)
-            current = new cl_5(parent, child_name, class_affil);
+            current = new cl_5(parent, child_name);
         else if (class_affil == 6)
-            current = new cl_6(parent, child_name, class_affil);
+            current = new cl_6(parent, child_name);
     }
 }
 

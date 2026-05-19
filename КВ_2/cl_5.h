@@ -6,7 +6,7 @@
 class cl_5 : public cl_base
 {
 public:
-    cl_5(cl_base* p_head_object, std::string name, int class_affil);
+    cl_5(cl_base* p_head_object, std::string name);
 };
 
 #endif
