@@ -1,5 +1,4 @@
 #include "Device.h"
-#include <iostream>
 
 Device::Device(std::string name, int N, int P)
 {

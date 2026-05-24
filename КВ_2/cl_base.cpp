@@ -4,11 +4,10 @@
 #include <iostream>
 #include <functional>
 
-cl_base::cl_base(cl_base* p_head_object, std::string name, int is_ready)
+cl_base::cl_base(cl_base* p_head_object, std::string name)
 {
     this->p_head_object = p_head_object;
     this->name = name;
-    this->is_ready = is_ready;
 
     if (p_head_object != nullptr)
     {
@@ -62,7 +61,20 @@ cl_base* cl_base::get_subordinate_by_index(int index)
     return v_child_objects[index - 1];
 }
 
-void cl_base::set_ready(int state)
+cl_base* cl_base::get_subordinate_by_name(std::string name)
+{
+    for (int i = 0; i < v_child_objects.size(); i++)
+    {
+        if (v_child_objects[i]->name == name)
+        {
+            return v_child_objects[i];
+        }
+    }
+
+    return nullptr;
+}
+
+void cl_base::setReady(int state)
 {
     // выключение
     if (state == 0)
@@ -71,7 +83,7 @@ void cl_base::set_ready(int state)
 
         for (auto child : this->v_child_objects)
         {
-            child->set_ready(0);
+            child->setReady(0);
         }
 
         return;
@@ -92,7 +104,7 @@ void cl_base::set_ready(int state)
     is_ready = state;
 }
 
-cl_base* cl_base::find_object_by_name(std::string name)
+cl_base* cl_base::findObjectFromBranch(std::string name)
 {
     cl_base* result = nullptr;
     int count = 0;
@@ -123,7 +135,7 @@ cl_base* cl_base::find_object_by_name(std::string name)
     return nullptr;
 }
 
-cl_base* cl_base::find_object(std::string name)
+cl_base* cl_base::findObjectFromRoot(std::string name)
 {
     cl_base* result = nullptr;
     int count = 0;
@@ -136,36 +148,10 @@ cl_base* cl_base::find_object(std::string name)
         root = root->p_head_object;
     }
 
-    // поиск по всему дереву
-    std::queue<cl_base*> q;
-    q.push(root);
-
-    while (!q.empty())
-    {
-        cl_base* current = q.front();
-        q.pop();
-
-        if (current->name == name)
-        {
-            result = current;
-            count++;
-        }
-
-        // добавляем детей в очередь
-        for (auto child : current->v_child_objects)
-        {
-            q.push(child);
-        }
-    }
-
-    // имя должно быть уникальным
-    if (count == 1)
-        return result;
-
-    return nullptr;
+    return root->findObjectFromBranch(name);
 }
 
-void cl_base::print_tree(int level)
+void cl_base::printTree(int level)
 {
     // отступы
     for (int i = 0; i < level; i++)
@@ -175,14 +161,13 @@ void cl_base::print_tree(int level)
 
     std::cout << this->name << std::endl;
 
-    // for (int i = 0; i < get_subordinate_count(); i++)
     for (auto child : this->v_child_objects)
     {
-        child->print_tree(level + 1);
+        child->printTree(level + 1);
     }
 }
 
-void cl_base::print_tree_ready(int level)
+void cl_base::printTreeReady(int level)
 {
     // отступ
     for (int i = 0; i < level; i++)
@@ -200,10 +185,9 @@ void cl_base::print_tree_ready(int level)
         std::cout << " is not ready" << std::endl;
 
     // рекурсия по детям
-    // for (int i = 0; i < v_child_objects.size(); i++)
     for (auto child : v_child_objects)
     {
-        child->print_tree_ready(level + 1);
+        child->printTreeReady(level + 1);
     }
 }
 

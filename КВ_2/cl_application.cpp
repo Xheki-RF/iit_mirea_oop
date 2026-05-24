@@ -32,31 +32,39 @@ void cl_application::build_tree_objects()
         if (class_affil < 2 || class_affil > 6)
             continue;
 
-        cl_base* parent = this->find_object(parent_name);
+        cl_base* parent = this->findObjectFromRoot(parent_name);
 
         if (parent == nullptr)
             continue;
 
-        if (this->find_object(child_name) != nullptr)
+        if (this->findObjectFromRoot(child_name) != nullptr)
             continue;
 
-        if (class_affil == 2)
+        switch (class_affil)
+        {
+        case 2:
             current = new cl_2(parent, child_name);
-        else if (class_affil == 3)
+            break;
+        case 3:
             current = new cl_3(parent, child_name);
-        else if (class_affil == 4)
+            break;
+        case 4:
             current = new cl_4(parent, child_name);
-        else if (class_affil == 5)
+            break;
+        case 5:
             current = new cl_5(parent, child_name);
-        else if (class_affil == 6)
+            break;
+        case 6:
             current = new cl_6(parent, child_name);
+            break;
+        }
     }
 }
 
 int cl_application::exec_app()
 {
     std::cout << "Object tree\n";
-    print_tree();
+    printTree();
     std::cout << "The tree of objects and their readiness\n";
 
     std::string name;
@@ -64,15 +72,15 @@ int cl_application::exec_app()
 
     while (std::cin >> name >> state)
     {
-        cl_base* obj = find_object(name);
+        cl_base* obj = findObjectFromRoot(name);
 
         if (obj != nullptr)
         {
-            obj->set_ready(state);
+            obj->setReady(state);
         }
     }
 
-    print_tree_ready();
+    printTreeReady();
 
     return 0;
 }

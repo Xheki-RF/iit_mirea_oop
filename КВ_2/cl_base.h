@@ -12,12 +12,11 @@ protected:
     std::vector<cl_base*> v_child_objects;
 
     // Новые поля
-    int class_affil;
-    int is_ready;
+    int is_ready = 0;
 
 public:
     // параметризированный конструктор с параметрами
-    cl_base(cl_base* p_head_object, std::string name = "Base_object", int is_ready = 0);
+    cl_base(cl_base* p_head_object, std::string name = "Base_object");
 
     // метод редактирования имени объекта
     bool set_name(std::string new_name);
@@ -32,21 +31,24 @@ public:
     int get_subordinate_count();
 
     // метод установки готовности объекта
-    void set_ready(int is_ready);
+    void setReady(int is_ready);
 
     // метод вывода наименований объектов в дереве иерархии слева направо и сверху вниз
-    void print_tree(int level = 0);
+    void printTree(int level = 0);
 
-    void print_tree_ready(int level = 0);
+    void printTreeReady(int level = 0);
 
     // метод получения адреса непосредственно подчиненного объект по его индексу
     cl_base* get_subordinate_by_index(int index);
 
+    // метод получения адреса непосредственно подчиненного объект по его имени
+    cl_base* get_subordinate_by_name(std::string name);
+
     // метод получения адреса (проходит по ветке от текущего рекурсивно)
-    cl_base* find_object_by_name(std::string name);
+    cl_base* findObjectFromBranch(std::string name);
 
     // Поиск объекта по всему дереву
-    cl_base* find_object(std::string);
+    cl_base* findObjectFromRoot(std::string);
 
     // метод деструктора
     ~cl_base();
